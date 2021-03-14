@@ -1,0 +1,5 @@
+print(hash("slow"))
+print(hash("fast"))
+print([None,None,None,None,None,None,None])
+print(hash("fast")%8)
+print(hash("slow")%8)
