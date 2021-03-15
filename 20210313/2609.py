@@ -34,4 +34,30 @@ least_common_multiple = M*N//greatest_common_divisor
 print(greatest_common_divisor)
 print(least_common_multiple)
 
+# 다른 분들 풀이 '유클리드 호제법' 이라는 개념을 사용해야 한다고..
+# x,y = map(int, input().split())
+# a,b = x,y
+# gcd = 0
+# # 24 18
+# while True:
+#     z = x % y # 24 % 18 = 12, 18 % 12 = 6
+#     if y % z == 0: # 18 % 12 = 6
+#         gcd = z
+#         lcd = z * y
+#         break
+#     x = y # x = 18
+#     y = z # y = 12
+# print(gcd)
+# print(int(a * b / gcd))
 
+# 다른 분들 풀이
+# a, b = map(int, input().split())
+# def gcd(a, b):                #유클리드 호제법
+#     if a < b:
+#         (a, b) = (b, a)
+#     while b != 0:
+#         (a, b) = (b, a % b)
+#     return a
+# c = gcd(a, b)   #최대공약수    
+# d = (a//c) * (b//c) * c   #최소공배수 
+# print(c, d, sep='\n')
