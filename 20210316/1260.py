@@ -57,18 +57,20 @@
 #     graph[j].sort() # BFS에서도 작은 수에 먼저 접근하기 위한 정렬(DFS할 때 graph를 건드림)
 # print(run_bfs(V,graph))
 
-# 풀이 2: DFS 누락 가능성을 없애 보았다. '런타임 에러'가 뜬다.
+# 풀이 2: ★★★★★ 노드에 간선이 없는 경우를 고려해야 한다. ★★★★★
 import sys
 
-graph = {} # 전체 간선을 표시하기 위한 dict
+graph = {
+
+    } # 전체 간선을 표시하기 위한 dict
 visited_dfs = []  # 방문한 정점을 넣기 위한 list
 visited_bfs = []
 
 def run_dfs(n,graph_node): # n: 탐색을 시작할 정점의 번호, graph_node: 탐색할 간선 표시된 dict 
-    to_visit = [n]
     if n not in graph_node: # ★★★★★ 노드에 간선이 없는 경우를 고려해야 한다. ★★★★★
         visited_dfs.append(n)
         return
+    to_visit = [n]
     while to_visit:
         current_visit = to_visit.pop() 
         visited_dfs.append(current_visit)
@@ -102,7 +104,6 @@ for i in range(M):
         graph[n_1] = [n_2]
     else:
         graph[n_1].append(n_2)
-
     if n_2 not in graph:
         graph[n_2] = [n_1]
     else:
@@ -122,3 +123,44 @@ result_2 = map(str,visited_bfs)
 print(' '.join(result_1))
 print(' '.join(result_2))
 
+# 풀이 3: 다른 분들 풀이 (간선 배열을 이용)
+# from sys import stdin
+# from collections import deque
+# n,m,v = map(int, stdin.readline().split())
+# matrix = []
+# # 1,2,3,4
+# #   0 1 2 3 4 
+# # 0 0 0 0 0 0
+# # 1 0 0 1 1 1
+# # 2 0 1 0 0 1
+# # 3 0 1 0 0 1
+# # 4 0 1 1 1 0
+# visited_dfs = [] # 1 2 4 3
+# visited_bfs = []
+# for x in range(n+1):
+#     matrix.append([0] * (n+1))
+# for x in range(m):
+#     a,b = map(int, stdin.readline().split())
+#     matrix[a][b] = 1
+#     matrix[b][a] = 1
+# # DFS -> Recursion
+# def dfs(v):
+#     visited_dfs.append(v)
+#     print(v, end=' ')
+#     for x in range(1, len(matrix[v])):
+#         if matrix[v][x] == 1 and x not in visited_dfs:
+#             dfs(x) # dfs(4)
+# dfs(v)
+# print()
+# # BFS -> Queue
+# def bfs(v):
+#     queue = deque()
+#     queue.append(v)
+#     while queue:
+#         current = queue.popleft()
+#         visited_bfs.append(current)
+#         print(current, end=' ')
+#         for x in range(1, n+1):
+#             if matrix[current][x] == 1 and x not in visited_bfs and x not in queue:
+#                 queue.append(x) 
+# bfs(v)
