@@ -82,13 +82,6 @@ print(find_square_num(0,tot_square))
 print(find_square_num(1,tot_square)) # 7
 
 # 풀이 2 : 다른 분들 답변
-from sys import stdin
-n = int(stdin.readline())
-matrix = [0] * n
-result = []
-for x in range(n):
-    arr = list(map(int, stdin.readline().split()))
-    matrix[x] = arr
 #         n * n
 #     x,y 0 0 0      x,y+n/2 0 0 0
 #       0 0 0 0            0 0 0 0
@@ -98,6 +91,15 @@ for x in range(n):
 #       0 0 0 0            0 0 0 0
 #       0 0 0 0            0 0 0 0
 #       0 0 0 0            0 0 0 0
+
+from sys import stdin
+n = int(stdin.readline())
+matrix = [0] * n
+result = []
+for x in range(n):
+    arr = list(map(int, stdin.readline().split()))
+    matrix[x] = arr
+
 def foo(x,y,n):
     color = matrix[x][y]
     for a in range(x, x+n):

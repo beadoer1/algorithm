@@ -10,20 +10,18 @@
 
 # 풀이
 import sys
-# 1,3 -> 2,4 -> 3,5 -> 4,6 -> 5,7 -> 6,8
-def back_track(_str,start_num,max_num,n):   # str은 결과 출력, n은 재귀 종료 조건을 만들기 위함
-    if  max_num == n:                       # 재귀 종료 조건
+# 1,3 -> 2,4 -> 3,5 -> 4,6 -> 5,7 -> 6,8(출력)    # start_num, max_num
+def back_track(_str,start_num,max_num,n):        # str은 결과 출력,n은 재귀 종료 조건을 만들기 위함
+    if  max_num == n:                            # 재귀 종료 조건 : max_num이 가장 끝 숫자와 같아지는 경우
         for i in range(start_num,max_num+1):
-            print(_str+str(i))
+            print(_str+str(i))                   # 여태까지 더해 온 결과값을 출력
         return    
 
     tmp = _str
-    print(tmp)
-    for i in range(start_num,(max_num)+1):  # 수열의 첫 번째 수를 결정
+    for i in range(start_num,(max_num)+1):       # 수열의 첫 번째 수를 결정
         _str = _str + str(i) + ' '
-        back_track(_str,i+1,max_num+1,n)    # 수열의 다음 번째 수를 결정하기 위한 재귀
+        back_track(_str,i+1,max_num+1,n)         # 수열의 다음 번째 수를 결정하기 위한 재귀
         _str = tmp
-        print(_str)
     return
 
 N,M = map(int,sys.stdin.readline().split())

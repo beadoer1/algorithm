@@ -51,6 +51,18 @@ expression_fi = '('+expression_2+')'
 # 4. str 식을 실제 식으로 바꾸어 그 결과를 출력한다.
 print(eval(expression_fi))
 
+# 풀이 3 : 다른 사람 풀이
+from sys import stdin
+n = stdin.readline().strip().split('-')
+# 첫번째 '-' 기준으로 나누어 왼쪽 합 빼기 오른쪽 합 = 최소값
+total = 0
+plus = map(int, n[0].split('+'))
+for x in plus:
+    total += x
+for x in n[1:]:
+    total -= sum(map(int, x.split('+')))
+print(total)
+
 
 
     
