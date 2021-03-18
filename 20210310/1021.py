@@ -34,15 +34,9 @@ for num_find in output_list:
         if index <= (len(_queue)/2):
             _queue.rotate(-index)
             count += index
-            # for i in range(5):
-            #     _queue.append(_queue.popleft())
-            #     count += 1
         else:
             _queue.rotate(len(_queue)-index)
             count += len(_queue)-index
-            # for i in range(len(_queue)-index):
-            #     _queue.appendleft(_queue.pop())   
-            #     count += 1   
     _queue.popleft()  
 
 print(count)

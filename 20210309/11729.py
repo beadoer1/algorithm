@@ -12,7 +12,25 @@
 # N이 20 이하인 입력에 대해서는 두 번째 줄부터 수행 과정을 출력한다. 두 번째 줄부터 K개의 줄에 걸쳐 두 정수 A B를 빈칸을 사이에 두고 출력하는데, 
 # 이는 A번째 탑의 가장 위에 있는 원판을 B번째 탑의 가장 위로 옮긴다는 뜻이다. N이 20보다 큰 경우에는 과정은 출력할 필요가 없다.
 
-# 풀이
+# 풀이 2 : 다른 사람 풀이 참고(이게 의도에 맞는 풀이 방법이라고 생각한다.)
+# -> 재귀를 이용 -> n개의 탑을 a에서 c로 옮긴다 -> move_plate(n,a,b,c) 
+def move_plate(n,a,b,c):
+    if n == 1:
+        print(a,c)
+    else:
+        move_plate(n-1,a,c,b)
+        print(a,c)
+        move_plate(n-1,b,a,c)
+
+num = int(input())
+
+total_cycle = 2**num-1
+print(total_cycle)
+
+if num <= 20:
+    move_plate(num,1,2,3)
+
+# 풀이 1
 # 반복 절차 (함수)
 # def move_plate_odd(num): # 홀짝이 바뀌는 번호가 다름, 앞으로 한 칸 돼서 다음에 들어가고, 뒤로 한 칸 돼서 그 다음에 들어감
 #     if num <= 1:
@@ -80,20 +98,4 @@
 #     for move_plate in result_of_move_plate:
 #         print(move_plate[0],move_plate[1])
 
-# 풀이 2 : 다른 사람 풀이 참고(이게 의도에 맞는 풀이 방법이라고 생각한다.)
-# -> 재귀를 이용 -> n개의 탑을 a에서 c로 옮긴다 -> move_plate(n,a,b,c) 
-def move_plate(n,a,b,c):
-    if n == 1:
-        print(a,c)
-    else:
-        move_plate(n-1,a,c,b)
-        print(a,c)
-        move_plate(n-1,b,a,c)
 
-num = int(input())
-
-total_cycle = 2**num-1
-print(total_cycle)
-
-if num <= 20:
-    move_plate(num,1,2,3)

@@ -8,6 +8,24 @@
 # 출력
 # 첫째 줄에 수열 A의 가장 긴 증가하는 부분 수열의 길이를 출력한다.
 
+# 풀이 2(21.03.18 재풀이) : dp를 이용해 앞에서 뒤로 달려보자. -> 방법까지 도달하는게 어려운 문제였다.
+import sys
+
+tot_num = int(sys.stdin.readline())
+num_seq = list(map(int, sys.stdin.readline().split()))  # 살펴볼 전체 수열
+
+dp = [1]*tot_num # 맨 앞 부터 본인까지 '최대 수열 길이 값'을 저장하는 별도 list
+
+for i in range(tot_num):
+    max_seq = 1
+    for j in range(i+1):
+        if j == i:
+            dp[i] = max_seq
+        # 앞에 있는 본인보다 작은 수의 dp 데이터(본인까지의 최대 수열 길이)를 확인해 거기에 + 1 해주는게 포인트.    
+        elif num_seq[j] < num_seq[i] and dp[j] >= max_seq: 
+            max_seq = dp[j] + 1
+print(max(dp))
+
 # 풀이 1: max 값을 저장해 놓고 앞으로 가는건 방법이 틀렸다.
 
 # import sys
@@ -35,23 +53,6 @@
 # sequence = [2,6,9,1,3]
 # print(find_longest_increasing_sequence(num,sequence))
 
-# 풀이 2 : dp를 이용해 앞에서 뒤로 달려보자. -> 방법까지 도달하는게 어려운 문제였다.
-import sys
-
-tot_num = int(sys.stdin.readline())
-num_seq = list(map(int, sys.stdin.readline().split()))  # 살펴볼 전체 수열
-
-dp = [1]*tot_num # 맨 앞 부터 본인까지 '최대 수열 길이 값'을 저장하는 별도 list
-
-for i in range(tot_num):
-    max_seq = 1
-    for j in range(i+1):
-        if j == i:
-            dp[i] = max_seq
-        # 앞에 있는 본인보다 작은 수의 dp 데이터(본인까지의 최대 수열 길이)를 확인해 거기에 + 1 해주는게 포인트.    
-        elif num_seq[j] < num_seq[i] and dp[j] >= max_seq: 
-            max_seq = dp[j] + 1
-print(max(dp))
 
 
 

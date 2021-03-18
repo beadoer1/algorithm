@@ -19,6 +19,33 @@
 # 4 7             15
 # 20 15 10 17
 
+# 풀이 3(21.03.18 재풀이)
+# raw data의 범위를 잘 잡는게 keypoint이다. 이 문제에서 나무를 꼭 나무 높이에 맞춰 자를 필요가 없기 때문에, raw는 0~max(tree_list)이 된다.
+import sys
+
+def find_whole_my_tree(cut_height,array):
+    my_tree = 0
+    for tree in array:
+        if tree < cut_height:
+            continue
+        else:
+            my_tree += tree-cut_height
+    return my_tree
+
+N,M = map(int,sys.stdin.readline().split())
+tree_list = list(map(int,sys.stdin.readline().split()))
+
+low = 0
+high = max(tree_list)
+while low <= high:
+    mid = (low+high)//2
+    if find_whole_my_tree(mid,tree_list) >= M:
+        low = mid + 1
+    else:
+        high = mid - 1
+print(high)
+    
+
 # 풀이 1 : 아.. 다 온 거 같은데... 자꾸 틀렸다고 하시네..
 # import sys
 
@@ -67,47 +94,47 @@
 #         print(length_trees[result[1]] + int((result[0]-needed_length)/result[1]))
 
 # 풀이 2 : 다시..ㅠ
-import sys
+# import sys
 
-num_tree,length_need = map(int,sys.stdin.readline().split())
-trees = list(map(int,sys.stdin.readline().split()))
-trees.sort(reverse=True)
-# print(trees)
-def find_cut_length(num,array,target):
-    low_in = 0
-    high_in = num-1
-    result_length = 0
-    while low_in <= high_in:
-        length_sum = 0
-        mid = int((high_in+low_in)/2)
+# num_tree,length_need = map(int,sys.stdin.readline().split())
+# trees = list(map(int,sys.stdin.readline().split()))
+# trees.sort(reverse=True)
+# # print(trees)
+# def find_cut_length(num,array,target):
+#     low_in = 0
+#     high_in = num-1
+#     result_length = 0
+#     while low_in <= high_in:
+#         length_sum = 0
+#         mid = int((high_in+low_in)/2)
 
-        for i in range(mid):
-            length_sum+=array[i]
-        length_result=length_sum-(mid*trees[mid])
-        index=mid
-        if length_result == target:
-            return [length_result, index]
-        elif length_result > target:
-            high_in = mid-1
-        else:
-            low_in = mid+1
+#         for i in range(mid):
+#             length_sum+=array[i]
+#         length_result=length_sum-(mid*trees[mid])
+#         index=mid
+#         if length_result == target:
+#             return [length_result, index]
+#         elif length_result > target:
+#             high_in = mid-1
+#         else:
+#             low_in = mid+1
     
-    return [length_result, index]
+#     return [length_result, index]
 
-result = find_cut_length(num_tree, trees, length_need)
-length_result = result[0]
-index_result = result[1]
-if num_tree == 1:
-    print(trees[0] - length_need)
-else:
-    if length_result==length_need:
-        print(trees[index_result])
-    elif length_result<length_need:
-        print(int(trees[num_tree-1]-((length_need-length_result)/(index_result+1))))
-    else:  
-        print(int(trees[index_result]+((length_result-length_need)/index_result)))
+# result = find_cut_length(num_tree, trees, length_need)
+# length_result = result[0]
+# index_result = result[1]
+# if num_tree == 1:
+#     print(trees[0] - length_need)
+# else:
+#     if length_result==length_need:
+#         print(trees[index_result])
+#     elif length_result<length_need:
+#         print(int(trees[num_tree-1]-((length_need-length_result)/(index_result+1))))
+#     else:  
+#         print(int(trees[index_result]+((length_result-length_need)/index_result)))
 
-# 풀이 3: 타인의 시선(돌아다니는 답안인 듯)
+# 풀이 : 다른 사람 풀이
 # import sys
 # N, M = map(int, sys.stdin.readline().split())
 # tree_list = list(map(int, sys.stdin.readline().split()))
@@ -116,15 +143,12 @@ else:
 # end = max(trees)
 # while start <= end:
 #     mid = (start + end) //2
-#     print("mid "+str(mid))
 #     check_data = 0
 #     for i in trees:
 #         if i >= mid:
 #             check_data += i - mid
 #     if check_data >= M:
 #         start = mid + 1
-#         print("start "+str(start))
 #     else:
 #         end = mid -1
-#         print("end "+str(end))
 # print(end)
