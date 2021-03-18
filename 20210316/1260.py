@@ -8,55 +8,6 @@
 # 출력
 # 첫째 줄에 DFS를 수행한 결과를, 그 다음 줄에는 BFS를 수행한 결과를 출력한다. V부터 방문된 점을 순서대로 출력하면 된다.
 
-# 풀이 1: '시간 초과' 아무래도 반복문도 2중으로 되어있고, sort도 두 번씩 해서 그런거 같다. 줄여보자
-#        + 해당 DFS 방식은 node를 쌓아놓지 않고 선을 따라가다 보니 다시 돌아올 곳이 없어서 '틀렸습니다.'가 나오는 듯 하다.
-# import sys
-# graph = {} # 전체 간선을 표시하기 위한 dict
-# visited_dfs = []  # 방문한 정점을 넣기 위한 list
-# visited_bfs = []
-# def run_dfs(n,graph): # n: 탐색을 시작할 정점의 번호, 탐색할 간선 표시된 dict 
-#     to_visit = [n]
-#     while to_visit:
-#         current_visit = to_visit.pop() 
-#         visited_dfs.append(current_visit)
-#         while len(visited_dfs) < len(graph):
-#             next_node = graph[current_visit].pop(0) # 0번째 index를 꺼내줌(낮은 것 부터 접근하기 위함)
-#             graph[current_visit].append(next_node) # 꺼내서 봤으니까 뒤에 다시 넣어줌(BFS 할 때도 봐야하니까.)
-#             if next_node not in visited_dfs and next_node not in to_visit:
-#                 to_visit.append(next_node)
-#                 break
-#     return visited_dfs
-
-# def run_bfs(n,graph):
-#     to_visit = [n]
-#     while to_visit:
-#         current_visit = to_visit.pop(0) # 추가된 순으로 돌아보기 위해 0번 index를 pop
-#         visited_bfs.append(current_visit)
-#         for node in graph[current_visit]:
-#             if node not in visited_bfs and node not in to_visit:
-#                 # BFS 에서는 queue를 이용해 넣은 순서대로 방문하므로써 너비를 우선으로 할 수 있다.
-#                 to_visit.append(node)
-#     return visited_bfs
-
-# N,M,V= map(int,sys.stdin.readline().split())
-# for i in range(M):
-#     n_1,n_2 = map(int,sys.stdin.readline().split())
-#     if n_1 not in graph:
-#         graph[n_1] = [n_2]
-#     else:
-#         graph[n_1].append(n_2)
-#     if n_2 not in graph:
-#         graph[n_2] = [n_1]
-#     else:
-#         graph[n_2].append(n_1)
-# graph_keys = graph.keys()
-# for j in graph_keys:
-#     graph[j].sort() # 작은 수에 먼저 접근하기 위한 정렬
-# print(run_dfs(V,graph))
-# for j in graph_keys:
-#     graph[j].sort() # BFS에서도 작은 수에 먼저 접근하기 위한 정렬(DFS할 때 graph를 건드림)
-# print(run_bfs(V,graph))
-
 # 풀이 2: ★★★★★ 노드에 간선이 없는 경우를 고려해야 한다. ★★★★★
 import sys
 
@@ -122,6 +73,55 @@ result_2 = map(str,visited_bfs)
 
 print(' '.join(result_1))
 print(' '.join(result_2))
+
+# 풀이 1: '시간 초과' 아무래도 반복문도 2중으로 되어있고, sort도 두 번씩 해서 그런거 같다. 줄여보자
+#        + 해당 DFS 방식은 node를 쌓아놓지 않고 선을 따라가다 보니 다시 돌아올 곳이 없어서 '틀렸습니다.'가 나오는 듯 하다.
+# import sys
+# graph = {} # 전체 간선을 표시하기 위한 dict
+# visited_dfs = []  # 방문한 정점을 넣기 위한 list
+# visited_bfs = []
+# def run_dfs(n,graph): # n: 탐색을 시작할 정점의 번호, 탐색할 간선 표시된 dict 
+#     to_visit = [n]
+#     while to_visit:
+#         current_visit = to_visit.pop() 
+#         visited_dfs.append(current_visit)
+#         while len(visited_dfs) < len(graph):
+#             next_node = graph[current_visit].pop(0) # 0번째 index를 꺼내줌(낮은 것 부터 접근하기 위함)
+#             graph[current_visit].append(next_node) # 꺼내서 봤으니까 뒤에 다시 넣어줌(BFS 할 때도 봐야하니까.)
+#             if next_node not in visited_dfs and next_node not in to_visit:
+#                 to_visit.append(next_node)
+#                 break
+#     return visited_dfs
+
+# def run_bfs(n,graph):
+#     to_visit = [n]
+#     while to_visit:
+#         current_visit = to_visit.pop(0) # 추가된 순으로 돌아보기 위해 0번 index를 pop
+#         visited_bfs.append(current_visit)
+#         for node in graph[current_visit]:
+#             if node not in visited_bfs and node not in to_visit:
+#                 # BFS 에서는 queue를 이용해 넣은 순서대로 방문하므로써 너비를 우선으로 할 수 있다.
+#                 to_visit.append(node)
+#     return visited_bfs
+
+# N,M,V= map(int,sys.stdin.readline().split())
+# for i in range(M):
+#     n_1,n_2 = map(int,sys.stdin.readline().split())
+#     if n_1 not in graph:
+#         graph[n_1] = [n_2]
+#     else:
+#         graph[n_1].append(n_2)
+#     if n_2 not in graph:
+#         graph[n_2] = [n_1]
+#     else:
+#         graph[n_2].append(n_1)
+# graph_keys = graph.keys()
+# for j in graph_keys:
+#     graph[j].sort() # 작은 수에 먼저 접근하기 위한 정렬
+# print(run_dfs(V,graph))
+# for j in graph_keys:
+#     graph[j].sort() # BFS에서도 작은 수에 먼저 접근하기 위한 정렬(DFS할 때 graph를 건드림)
+# print(run_bfs(V,graph))
 
 # 풀이 3: 다른 분들 풀이 (간선 배열을 이용)
 # from sys import stdin
