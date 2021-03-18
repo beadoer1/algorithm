@@ -12,6 +12,30 @@
 # z              Z
 # baaa           A
 
+# 풀이 5(21.03.18 재풀이):  alpha index와 ascii 사용 
+import sys
+word = input().upper()
+
+alpha_list = [0]*26 # 알파벳 별(index로 구분) 빈도수를 나타내주기 위한 list
+
+for char in word:
+    index = ord(char) - 65 # ord(): char -> ASCII 로 변경해주는 파이썬 내장함수.(65는 'A'의 ASCII)
+    alpha_list[index] = alpha_list[index] + 1
+
+max_fre = max(alpha_list)
+count_max_fre = 0
+index_max_fre = []
+for i in range(len(alpha_list)):
+    if alpha_list[i] == max_fre:
+        count_max_fre+=1
+        index_max_fre.append(i)
+
+if count_max_fre > 1:
+    print('?')
+else:
+    print(chr(index_max_fre[0]+65)) # chr(): ASCII -> char 로 변경해주는 파이썬 내장함수.
+
+
 # 풀이 1 : 시간 초과..
 # word_check = list(input().upper()) # input()을 받아 대문자로 바꿔 char 단위로 분리
 # char_max = ''  # 판별을 위한 변수 ↓
@@ -57,24 +81,24 @@
 # else:
 #     print(c_o[1][0])
 
-# 풀이 4 : 왐마... 드디어 ㅠㅠㅠㅠ
-from collections import Counter
-char_l = list(input().upper())
-res = char_l[0] # 한가지 종류의 문자만 들어올 경우(else 없애기 위함)
-if len(char_l) > 1:
-    # frequency check
-    fre_c = Counter(char_l).most_common(2)
-    fre_c0 = fre_c[0]
-    fre_c1 = fre_c[1]
-    if fre_c0[1] == fre_c1[1]:
-        res = '?'
-    elif fre_c0[1] > fre_c1[1]:
-        res = fre_c0[0]
-    else:
-        res = fre_c1[0]
-print(res)
+# 풀이 4 : '맞았습니다.'
+# from collections import Counter
+# char_l = list(input().upper())
+# res = char_l[0] # 한가지 종류의 문자만 들어올 경우(else 없애기 위함)
+# if len(char_l) > 1:
+#     # frequency check
+#     fre_c = Counter(char_l).most_common(2)
+#     fre_c0 = fre_c[0]
+#     fre_c1 = fre_c[1]
+#     if fre_c0[1] == fre_c1[1]:
+#         res = '?'
+#     elif fre_c0[1] > fre_c1[1]:
+#         res = fre_c0[0]
+#     else:
+#         res = fre_c1[0]
+# print(res)
 
-# 풀이 4 : 태웅님 답변 참고. 맞았습니다!..ㅠㅠ 왜 내껀 안되냐고오 ㅠㅠ
+# 풀이 5 : 다른 사람 답변 참고. 정답
 # from collections import Counter
 # char_count = Counter(list(input().upper()))
 # res_ = []
@@ -92,17 +116,17 @@ print(res)
 # for char in char_count: # key 값만 불러오는구나.
     
 
-# 타인의 시각 (문태웅)
-from collections import Counter
-word = list(input().upper())
-frequency = Counter(word)
-result_ = []
-for name_,number_ in frequency.items():
-    if number_ == max(frequency.values()):
-        result_.append(name_)
-        if len(result_) > 1:
-            break
-if len(result_) == 1:
-    print(result_[0])
-else:
-    print('?')
+# 풀이 : 다른 사람 풀이
+# from collections import Counter
+# word = list(input().upper())
+# frequency = Counter(word)
+# result_ = []
+# for name_,number_ in frequency.items():
+#     if number_ == max(frequency.values()):
+#         result_.append(name_)
+#         if len(result_) > 1:
+#             break
+# if len(result_) == 1:
+#     print(result_[0])
+# else:
+#     print('?')

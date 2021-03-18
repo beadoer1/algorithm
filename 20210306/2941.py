@@ -18,6 +18,13 @@
 # 출력
 # 입력으로 주어진 단어가 몇 개의 크로아티아 알파벳으로 이루어져 있는지 출력한다.
 
+# 풀이 2 : 다른 사람 답변 참고 후 재풀이
+cro_alpha = ['c=', 'c-', 'dz=', 'd-', 'lj', 'nj', 's=', 'z=']
+word = input()
+for cro in cro_alpha : # 문자열에 포함된 문자열을 바로 확인 가능하다.
+  word = word.replace(cro, '0') # 한 글자로 처리하기 위해 알파벳 외 특정 문자를 넣어준다.
+print(len(word))  
+
 # 풀이 1: 런타임 에러.. 대체 뭐냐고요..
 # word = list(input())
 # count = 0
@@ -41,9 +48,4 @@
 # print(count)  
 
 
-# # 풀이 2 : 타 팀 답변 참고
-cro_alpha = ['c=', 'c-', 'dz=', 'd-', 'lj', 'nj', 's=', 'z=']
-word = input()
-for cro in cro_alpha :
-  word = word.replace(cro, ' ')
-print(len(word))  
+

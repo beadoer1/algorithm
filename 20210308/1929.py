@@ -11,6 +11,28 @@
 #        11
 #        13
 
+# 풀이 6(21.03.18 재풀이): 소수 찾기에서는 전체 수에서 배수를 제거해 나가는 것이 효율 적이다.
+#                      + 소수 찾기에서 시간을 줄이기 위해서는 '제곱근'을 잊지 말아야 한다.
+import sys
+M,N = map(int,sys.stdin.readline().split())
+prime_list = []
+
+for num in range(N+1):
+    prime_list.append(num)
+
+for num in range(2,int(N**0.5)+1):
+    if prime_list[num] == 0 or prime_list[num] == 1:
+        continue
+    elif prime_list[num] != 0 and prime_list[num] != 1:
+        n = 2
+        while num*n <= N: 
+            prime_list[num*n]=1
+            n+=1
+        
+for i in range(M,N+1):
+    if prime_list[i] != 1:
+        print(i)
+
 # 풀이 1 : 결과는 출력이 되지만 이중 loop를 돌아 그런지 '시간 초과' 가 뜬다. + 틀린 답이기도 함
 # def prime_num(num):
 #     for i in range(2,num):
@@ -181,16 +203,16 @@
 # m,n = map(int,input().split())
 # prime_all(m, n)
 
-# 문제 6 : 타인의 시선(문태웅) -> 내 코드보다 약 10배 가량 빠르다..ㅠㅠ
-m, n = map(int, input().split())
-def prime_number(m, n):
-    n+= 1
-    prime = [True] * n
-    for i in range(2, int(n**0.5)+1):
-        if prime[i]== True:
-            for j in range(2*i, n, i):
-                prime[j] = False
-    for i in range(m, n):
-        if i > 1 and prime[i] == True:
-            print(i)
-prime_number(m, n)
+# 문제 : 다른 사람 풀이 -> 전체 list에서 각 수의 배수를 제거해주는 방식이 훨씬 효율적이다.
+# m, n = map(int, input().split())
+# def prime_number(m, n):
+#     n+= 1
+#     prime = [True] * n
+#     for i in range(2, int(n**0.5)+1):
+#         if prime[i]== True:
+#             for j in range(2*i, n, i):
+#                 prime[j] = False
+#     for i in range(m, n):
+#         if i > 1 and prime[i] == True:
+#             print(i)
+# prime_number(m, n)

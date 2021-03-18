@@ -11,7 +11,7 @@
 #    5 1 6            2
 #  100 99 1000000000  999999901
 
-# 풀이 1 통과!!! 시작이 좋구만
+# 풀이 1 통과!!!
 import math
 a,b,v = map(int,input().split())
 d = math.ceil((v-b)/(a-b))

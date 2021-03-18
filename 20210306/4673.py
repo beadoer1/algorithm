@@ -9,13 +9,22 @@
 # 생성자가 없는 숫자를 셀프 넘버라고 한다. 100보다 작은 셀프 넘버는 총 13개가 있다. 
 # 1, 3, 5, 7, 9, 20, 31, 42, 53, 64, 75, 86, 97
 # 10000보다 작거나 같은 셀프 넘버를 한 줄에 하나씩 출력하는 프로그램을 작성하시오.
-
 # 입력
 # 입력은 없다.
-
 # 출력
 # 10,000보다 작거나 같은 셀프 넘버를 한 줄에 하나씩 증가하는 순서로 출력한다.
 
+# 풀이 4(21.03.18 재풀이)
+def d(n):
+    digit_num_list = list(map(int,list(str(num)))) # 문자열을 한 글자씩 나눠 저장할 때는 list()만 넣어주면 된다. split() X
+    return n + sum(digit_num_list)
+not_self_num = []
+for num in range(1,10001):
+    not_self_num.append(d(num))
+for i in range(1,10001):
+    if i not in not_self_num:
+        print(i)
+        
 # 풀이 1 실패.. raw 를 만들어 놓고 빼려고 했는데.. 너무 먼 길 이었다.
 # from collections import deque
 
@@ -72,29 +81,29 @@
 # print(b)
 
 # 풀이 3 : set 을 활용 !! 성공성공!!
-a = set()
-b = set()
-c = set()
-def addN(num,se):
-    num_sep_list = list(map(int,str(num)))
-    num = num+sum(num_sep_list)
-    if num > 10000:
-        return se
-    se.add(num)
-    return addN(num,se)
+# a = set()
+# b = set()
+# c = set()
+# def addN(num,se):
+#     num_sep_list = list(map(int,str(num)))
+#     num = num+sum(num_sep_list)
+#     if num > 10000:
+#         return se
+#     se.add(num)
+#     return addN(num,se)
 
-for i in range(1,10001):
-    addN(i,a)
+# for i in range(1,10001):
+#     addN(i,a)
 
-for i in range(1,10001):
-    b.add(i)
+# for i in range(1,10001):
+#     b.add(i)
 
-c = sorted(b - a)
+# c = sorted(b - a)
 
-for num in c:
-    print(num)
+# for num in c:
+#     print(num)
 
-# 풀이 4: 타인의 시각 (문태웅) 훨씬.. 빠르다..ㅠㅠ
+# 풀이 : 다른 사람 풀이
 # list1 = list()
 # def d(N):
 #     for j in str(N):
