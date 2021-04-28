@@ -2,7 +2,7 @@
 **홀로 해결하지 못한 문제는 _기울게_ 표시 하였습니다. 꼭 한 번 더 풀어보도록 하죠.**
 
 ### **문제 풀이 목록**
-#### **백준 알고리즘(Baekjoon Online Judge)_[link](https://www.acmicpc.net/)** 
+#### 백준 알고리즘(Baekjoon Online Judge)_[link](https://www.acmicpc.net/)
 **기초 수학**
 - [10869](20210305/10869.py) '사칙연산' 
 - [2588](20210305/2588.py) '사칙연산(곱셈)'
@@ -89,6 +89,9 @@
 - [11399](20210313/11399.py) 'ATM((그리디 알고리즘))' 
 - [1541](20210313/1541.py) '잃어버린 괄호(그리디 알고리즘)' 
 
+#### 프로그래머스(Programmers)_[link](https://programmers.co.kr/)
+- [[python]](20210427/stockprice.py) [[Java]](20210427/src/Stockprice.java) '주식 가격' - 스택/큐 문제라는데..
+
 ### **강의 실습 목록**
 #### 스파르타코딩클럽 '알고보면 알기쉬운 알고리즘'
 **week_1(최대값, ASCII Code, 최빈값, 선형탐색, 순차계산(최대값), 중복없는 단일값**
@@ -136,8 +139,13 @@
 - [05_fibo_recursion](spartacodingclub/week_4/05_fibo_recursion.py)
 - [06_fibo_dinamic_programming](spartacodingclub/week_4/06_fibo_dinamic_programming.py)
 
+#### 프로그래머스 '파이썬을 파이썬답게'
+
+
 ### 책 실습 목록
-#### Hello Coding 그림으로 배우는 알고리즘
+#### Hello Coding 그림으로 배우는 알고리즘_[link](https://programmers.co.kr/learn/courses/4008)
+- [수강 전에 풀어볼 문제](programmersPython/lengthOfArrays.py)
+- [n진법으로 표기된 string을 10진법 숫자로 변환하기-int 함수](programmersPython/numeral_system.py)
 
   
   
