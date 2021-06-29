@@ -14,20 +14,38 @@ import java.util.Scanner;
 
 public class Solution11 {
     public String solution(String str) {
-        char currentC = 'a';
-        int count = 1;
+        // my answer
+//        char currentC = 'a';
+//        int count = 1;
+//        String result = "";
+//        for (char c : str.toCharArray()) {
+//            if (c == currentC) {
+//                count++;
+//            }else{
+//                result = result + currentC + count;
+//                currentC = c;
+//                count = 1;
+//            }
+//        }
+//        result = result + currentC + count;
+//        return result.replace("a","").replaceAll("1", "");
+
+        // lectur answer
+        str += " ";
         String result = "";
-        for (char c : str.toCharArray()) {
-            if (c == currentC) {
+        int count = 1;
+        for (int i = 0; i < str.length() - 1; i++) {
+            if (str.charAt(i) == str.charAt(i + 1)) {
                 count++;
             }else{
-                result = result + currentC + count;
-                currentC = c;
+                result += str.charAt(i);
+                if (count > 1) {
+                    result += count;
+                }
                 count = 1;
             }
         }
-        result = result + currentC + count;
-        return result.replace("a","").replaceAll("1", "");
+        return result;
     }
 
     public static void main(String[] args) {

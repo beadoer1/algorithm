@@ -21,9 +21,24 @@ public class Solution9 {
 
         int result = Integer.parseInt(strReplaceUpperCase);
 
-        // lectur answer
-
         return result;
+
+        // lectur answer1
+//        int result = 0;
+//        for (char c : str.toCharArray()) {
+//            if(48 <= c && c <= 57){
+//                result = result * 10 + (c - 48);
+//            }
+//        }
+
+        // lectur answer2
+//        String resultStr = "";
+//        for (char c : str.toCharArray()) {
+//            if (Character.isDigit(c)) {
+//                resultStr+=c;
+//            }
+//        }
+//        int result = Integer.parseInt(resultStr);
     }
 
     public static void main(String[] args) {
