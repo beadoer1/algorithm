@@ -18,8 +18,6 @@ public class Solution1 {
     public int solution(String str, char c) {
         str = str.toLowerCase();
         c = Character.toLowerCase(c); // 자료형 변수는 자료형 클래스 이용하여 조작한다.
-
-
         int count = 0;
 
         // 일반적인 for 문 사용
