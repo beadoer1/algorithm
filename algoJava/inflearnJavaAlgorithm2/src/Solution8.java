@@ -17,7 +17,11 @@
 //예시 출력 1
 //4 3 2 1 5
 
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Solution8 {
 
@@ -43,15 +47,28 @@ public class Solution8 {
 //        }
 
         // lecture answer : O(n^2) (126ms) -> 들어가는 숫자가 엄청 커지면 더 느려지지 않을까..ㅠㅠ
+//        int[] answer = new int[totNum];
+//        for (int i = 0; i < totNum; i++) {
+//            int count = 0;
+//            for (int j = 0; j < totNum; j++) {
+//                if(scoreArr[j] > scoreArr[i]){
+//                    count++;
+//                }
+//                answer[i] = count + 1;
+//            }
+//        }
+
+        // my answer 21.08.30 (262ms) 이거 맘에 드는데 느리네 ㅠㅠ
         int[] answer = new int[totNum];
-        for (int i = 0; i < totNum; i++) {
-            int count = 0;
-            for (int j = 0; j < totNum; j++) {
-                if(scoreArr[j] > scoreArr[i]){
-                    count++;
-                }
-                answer[i] = count + 1;
-            }
+
+        List<Integer> sortedList = Arrays.stream(scoreArr)
+                .boxed()
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
+
+        for (int i = 0; i < answer.length; i++) {
+            answer[i] = sortedList.indexOf(scoreArr[i]) + 1;
+
         }
 
         return answer;

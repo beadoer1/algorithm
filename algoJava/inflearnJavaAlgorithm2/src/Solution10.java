@@ -28,66 +28,23 @@ import java.util.Scanner;
 
 public class Solution10 {
     // my answer(175ms)
-    public boolean isBong(int[][] arr, int x, int y) {
-        int[] dx = {1, -1, 0, 0};
-        int[] dy = {0, 0, 1, -1};
-
-        for (int i = 0; i < 4; i++) {
-            if(arr[x][y] <= arr[x+dx[i]][y+dy[i]]){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public int solution(int n, int[][] arr) {
-        int answer = 0;
-        for (int i = 1; i < n-1; i++) {
-            for (int j = 1; j < n-1; j++) {
-                if(isBong(arr, i, j)){
-                    answer++;
-                }
-            }
-        }
-        return answer;
-    }
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int numIn = scanner.nextInt();
-        int n = numIn + 2;
-        int[][] arr = new int[n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (i == 0 || j == 0 || i == n - 1 || j == n - 1) {
-                    arr[i][j] = 0;
-                } else {
-                    arr[i][j] = scanner.nextInt();
-                }
-            }
-        }
-
-        Solution10 solution10 = new Solution10();
-        System.out.println(solution10.solution(n, arr));
-    }
-
-    // lecture answer(174ms)
-//    int[] dx = {1, -1, 0, 0};
-//    int[] dy = {0, 0, 1, -1};
+//    public boolean isBong(int[][] arr, int x, int y) {
+//        int[] dx = {1, -1, 0, 0};
+//        int[] dy = {0, 0, 1, -1};
+//
+//        for (int i = 0; i < 4; i++) {
+//            if(arr[x][y] <= arr[x+dx[i]][y+dy[i]]){
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+//
 //    public int solution(int n, int[][] arr) {
 //        int answer = 0;
-//        int nx, ny;
-//        for (int i = 0; i < n; i++) {
-//            for (int j = 0; j < n; j++) {
-//                boolean flag = true;
-//                for (int k = 0; k < 4; k++) {
-//                    nx = i + dx[k];
-//                    ny = j + dy[k];
-//                    if (nx >= 0 && nx < n && ny >= 0 && ny < n && arr[i][j] <= arr[nx][ny]) {
-//                        flag = false;
-//                    }
-//                }
-//                if (flag) {
+//        for (int i = 1; i < n-1; i++) {
+//            for (int j = 1; j < n-1; j++) {
+//                if(isBong(arr, i, j)){
 //                    answer++;
 //                }
 //            }
@@ -97,17 +54,60 @@ public class Solution10 {
 //
 //    public static void main(String[] args) {
 //        Scanner scanner = new Scanner(System.in);
-//        int n = scanner.nextInt();
-//
+//        int numIn = scanner.nextInt();
+//        int n = numIn + 2;
 //        int[][] arr = new int[n][n];
 //        for (int i = 0; i < n; i++) {
 //            for (int j = 0; j < n; j++) {
-//                arr[i][j] = scanner.nextInt();
+//                if (i == 0 || j == 0 || i == n - 1 || j == n - 1) {
+//                    arr[i][j] = 0;
+//                } else {
+//                    arr[i][j] = scanner.nextInt();
+//                }
 //            }
 //        }
 //
 //        Solution10 solution10 = new Solution10();
 //        System.out.println(solution10.solution(n, arr));
-//
 //    }
+
+    // lecture answer(174ms)
+    int[] dx = {1, -1, 0, 0};
+    int[] dy = {0, 0, 1, -1};
+    public int solution(int n, int[][] arr) {
+        int answer = 0;
+        int nx, ny;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                boolean flag = true;
+                for (int k = 0; k < 4; k++) {
+                    nx = i + dx[k];
+                    ny = j + dy[k];
+                    if (nx >= 0 && nx < n && ny >= 0 && ny < n && arr[i][j] <= arr[nx][ny]) {
+                        flag = false;
+                    }
+                }
+                if (flag) {
+                    answer++;
+                }
+            }
+        }
+        return answer;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+
+        int[][] arr = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                arr[i][j] = scanner.nextInt();
+            }
+        }
+
+        Solution10 solution10 = new Solution10();
+        System.out.println(solution10.solution(n, arr));
+
+    }
 }

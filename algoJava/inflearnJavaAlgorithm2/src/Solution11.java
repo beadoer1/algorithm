@@ -35,52 +35,52 @@ import java.util.Scanner;
 public class Solution11 {
 
     // my answer (156ms)
-    public int solution(int n, int[][] arr) {
-        int[] sameClassNumArr = new int[n];
-        int maxNum = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                for (int k = 0; k < 5; k++) {
-                    if (arr[i][k] == arr[j][k]) {
-                        sameClassNumArr[i]++;
-                        break;
-                    }
-                }
-            }
-            if (sameClassNumArr[i] > maxNum) {
-                maxNum = sameClassNumArr[i];
-            }
-        }
-
-        for (int i = 0; i < n; i++) {
-            if (sameClassNumArr[i] == maxNum) {
-                return i+1;
-            }
-        }
-        return 1;
-    }
-
-    //lecture answer(162ms)
 //    public int solution(int n, int[][] arr) {
-//        int answer = 0;
+//        int[] sameClassNumArr = new int[n];
 //        int maxNum = 0;
 //        for (int i = 0; i < n; i++) {
-//            int count = 0;
 //            for (int j = 0; j < n; j++) {
 //                for (int k = 0; k < 5; k++) {
 //                    if (arr[i][k] == arr[j][k]) {
-//                        count++;
+//                        sameClassNumArr[i]++;
 //                        break;
 //                    }
 //                }
 //            }
-//            if (count > maxNum) {
-//                maxNum = count;
-//                answer = i+1;
+//            if (sameClassNumArr[i] > maxNum) {
+//                maxNum = sameClassNumArr[i];
 //            }
 //        }
-//        return answer;
+//
+//        for (int i = 0; i < n; i++) {
+//            if (sameClassNumArr[i] == maxNum) {
+//                return i+1;
+//            }
+//        }
+//        return 1;
 //    }
+
+    //lecture answer(162ms)
+    public int solution(int n, int[][] arr) {
+        int answer = 0;
+        int maxNum = 0;
+        for (int i = 0; i < n; i++) {
+            int count = 0;
+            for (int j = 0; j < n; j++) {
+                for (int k = 0; k < 5; k++) {
+                    if (arr[i][k] == arr[j][k]) {
+                        count++;
+                        break;
+                    }
+                }
+            }
+            if (count > maxNum) {
+                maxNum = count;
+                answer = i+1;
+            }
+        }
+        return answer;
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
