@@ -28,15 +28,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-class Point{
-    int x;
-    int y;
-    Point(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-}
-
 public class Solution11 {
     public static final int[] dx = {1, 0, -1, 0};
     public static final int[] dy = {0, -1, 0, 1};
