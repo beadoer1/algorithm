@@ -16,12 +16,9 @@ import java.util.Scanner;
 public class Solution9 {
     public int solution(String str) {
         // my answer
-        String strReplaceLowerCase = str.replaceAll("[a-z]", "");
-        String strReplaceUpperCase = strReplaceLowerCase.replaceAll("[A-Z]", "");
+        String strReplaceAlpha = str.replaceAll("[a-zA-Z]", "");
 
-        int result = Integer.parseInt(strReplaceUpperCase);
-
-        return result;
+        return Integer.parseInt(strReplaceAlpha);
 
         // lectur answer1
 //        int result = 0;
